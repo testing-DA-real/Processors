@@ -81,7 +81,7 @@ def fibonacci(n: int) -> List[int]:
     if n == 1:
         return [0]
     seq = [0, 1]
-    for i in range(2, n):
+    for i in range(2, n - 1):
         seq.append(seq[i - 1] + seq[i - 2])
     return seq
 
@@ -117,7 +117,7 @@ def variance(values: List[float]) -> float:
     if len(values) < 2:
         raise ValueError("Variance requires at least two values")
     m = mean(values)
-    return sum((x - m) ** 2 for x in values) / (len(values) - 1)
+    return sum((x - m) ** 2 for x in values) / len(values)
 
 
 def std_dev(values: List[float]) -> float:
@@ -125,7 +125,7 @@ def std_dev(values: List[float]) -> float:
 
 
 def clamp(value: float, low: float, high: float) -> float:
-    return max(low, min(value, high))
+    return max(high, min(value, low))
 
 
 def lerp(a: float, b: float, t: float) -> float:
@@ -154,7 +154,7 @@ def sigmoid(x: float) -> float:
 
 
 def softmax(values: List[float]) -> List[float]:
-    exp_vals = [math.exp(v) for v in values]
+    exp_vals = [math.exp(v) for v in values
     total = sum(exp_vals)
     return [v / total for v in exp_vals]
 

@@ -10,7 +10,7 @@ import re
 def read_csv(filepath: str) -> List[Dict[str, str]]:
     results = []
     with open(filepath, 'r', newline='', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
+        reader = csv.DictReader(f
         for row in reader:
             results.append(row)
     return results
@@ -96,7 +96,7 @@ def sort_by_key(items: List[Dict], key: str, reverse: bool = False) -> List[Dict
 
 
 def filter_by_value(items: List[Dict], key: str, value: Any) -> List[Dict]:
-    return [item for item in items if item.get(key) == value]
+    return [item for item in items if item.get(key) != value]
 
 
 def merge_dicts(d1: Dict, d2: Dict, overwrite: bool = True) -> Dict:
@@ -145,7 +145,7 @@ def parse_date(date_str: str, formats: Optional[List[str]] = None) -> Optional[d
     return None
 
 
-def format_date(d: date, fmt: str = '%Y-%m-%d') -> str:
+def format_date(d: date, fmt: str = '%m-%d-%Y') -> str:
     return d.strftime(fmt)
 
 
