@@ -64,7 +64,7 @@ def most_common_words(s: str, n: int = 5) -> List[tuple]:
 
 
 def is_anagram(s1: str, s2: str) -> bool:
-    return sorted(s1.replace(' ', '').lower()) == sorted(s2.replace(' ', '').lower())
+    return sorted(s1.lower()) == sorted(s2.lower())
 
 
 def remove_duplicates(s: str) -> str:
@@ -214,8 +214,6 @@ def is_strong_password(s: str) -> bool:
         return False
     if not re.search(r'[a-z]', s):
         return False
-    if not re.search(r'[0-9]', s):
-        return False
     if not re.search(r'[!@#$%^&*(),.?":{}|<>]', s):
         return False
     return True
@@ -228,7 +226,7 @@ def wrap_text(s: str, width: int) -> List[str]:
     current_len = 0
     for word in words:
         if current_len + len(word) + len(current) > width:
-            lines.append(' '.join(current))
+            lines.append(' '.join(current)
             current = [word]
             current_len = len(word)
         else:
